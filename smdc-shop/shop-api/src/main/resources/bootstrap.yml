@@ -71,11 +71,11 @@ management:
       exposure:
         include: '*'
 print:
-  user: 591127558@qq.com
-  ukey: WBAAxKgpNJbF9q4G
+  user: 
+  ukey:
 xy-print:
-  user: jiduoke@163.com
-  ukey: 27e2f8354a2d45f1b752b28c2b303e58
+  user: 
+  ukey: 
 
 logging:
   level:
