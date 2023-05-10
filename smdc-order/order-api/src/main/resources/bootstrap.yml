@@ -95,11 +95,11 @@ seata:
       grouplist: seata:8091
     disable-global-transaction: false
 wx:
-  payUrl: https://api.mch.weixin.qq.com/pay/unifiedorder
-  mchId: 1607464061
-  appId: wx7b7973e8b43634f6
-  notifyUrl: http://www.jiduoke.shop/order-api/order/result
-  payKey: 2ed1f8f8f0604d0ca36ff415ac8d5352
+  payUrl: 
+  mchId: 
+  appId:
+  notifyUrl: 
+  payKey: 
 
 
 
