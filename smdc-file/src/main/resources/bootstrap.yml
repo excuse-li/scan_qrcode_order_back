@@ -76,7 +76,7 @@ spring:
     proxy-target-class: true
 aliyun:
   oss:
-    key: LTAI4GHzqDRTVsojiYy2LDGe
-    secret: t1SUOtGrpp74hoJL1B1bxGmUWzjV7D
-    bucket: jiduoke
-    entrypoint: oss-cn-zhangjiakou.aliyuncs.com
+    key: 
+    secret:
+    bucket:
+    entrypoint:
