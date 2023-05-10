@@ -84,7 +84,7 @@ seata:
       grouplist: seata:8091
     disable-global-transaction: false
 wx:
-  appId: wx7b7973e8b43634f6
-  appsecret: d6ebeb48588fb2da24aeaff35177cd72
-  token: aaaaaaa
-  wxUser: gh_36526bd4f53a
+  appId: 
+  appsecret: 
+  token:
+  wxUser: 
