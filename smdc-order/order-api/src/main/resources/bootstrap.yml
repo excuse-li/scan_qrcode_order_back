@@ -1,0 +1,105 @@
+server:
+  port: 65529
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  main:
+    allow-bean-definition-overriding: true
+  resources:
+    add-mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+  application:
+    name: order-api
+  datasource:
+    url: jdbc:mysql://mysql:3306/smdc?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+    username: root
+    password: Ab1234568
+  redis:
+    host: redis
+    port: 6379
+    password: Ab1234568
+    database: 1
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: SEATA_GROUP
+    sentinel:
+      transport:
+        port: 8766 #默认8719端口，假如被占用会自动从8719开始依次+1扫描，直至找到未被占用的端口
+        dashboard: sentinel:8858
+      eager: true
+    nacos:
+      config:
+        server-addr: nacos:8848
+        username: nacos
+        password: Ab1234568
+      discovery:
+        server-addr: nacos:8848
+        username: nacos
+        password: Ab1234568
+  aop:
+    proxy-target-class: true
+ribbon:
+  ConnectTimeout: 1000 # 连接超时时间(ms)
+  ReadTimeout: 5000 # 通信超时时间(ms)
+  OkToRetryOnAllOperations: false # 是否对所有操作重试
+  MaxAutoRetriesNextServer: 0 # 同一服务不同实例的重试次数
+  MaxAutoRetries: 0 # 同一实例的重试次数
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
+
+
+feign:
+  sentinel:
+    enabled: true
+  compression:
+    request:
+      min-request-size: 1000000
+  httpclient:
+    enabled: true
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+seata:
+  enable-auto-data-source-proxy: true
+  tx-service-group: SEATA_GROUP
+  registry:
+    type: nacos
+    nacos:
+      server-addr: nacos:8848
+      # namespace: seata_namespace_id
+      group: SEATA_GROUP
+      username: nacos
+      password: Ab1234568
+  config:
+    type: nacos
+    nacos:
+      server-addr: nacos:8848
+      #      namespace: seata_namespace_id
+      group: SEATA_GROUP
+      userName: nacos
+      password: Ab1234568
+      namespace:
+  service:
+    vgroup_mapping:
+      SEATA_GROUP: DEFAULT
+    default:
+      grouplist: seata:8091
+    disable-global-transaction: false
+wx:
+  payUrl: https://api.mch.weixin.qq.com/pay/unifiedorder
+  mchId: 1607464061
+  appId: wx7b7973e8b43634f6
+  notifyUrl: http://www.jiduoke.shop/order-api/order/result
+  payKey: 2ed1f8f8f0604d0ca36ff415ac8d5352
+
+
+

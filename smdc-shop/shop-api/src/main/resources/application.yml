@@ -1,0 +1,45 @@
+#spring:
+#  application:
+#    name: shop-api
+#  datasource:
+#    url: jdbc:mysql://mysql:3306/smdc?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8&useSSL=false
+#    username: root
+#    password: Ab1234568
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
+#logging:
+#  level:
+#    root: debug
+
+seata:
+  enable-auto-data-source-proxy: true
+  tx-service-group: SEATA_GROUP
+  registry:
+    type: nacos
+    nacos:
+      server-addr: nacos:8848
+      # namespace: seata_namespace_id
+      group: SEATA_GROUP
+      username: nacos
+      password: Ab1234568
+  config:
+    type: nacos
+    nacos:
+      server-addr: nacos:8848
+      #      namespace: seata_namespace_id
+      group: SEATA_GROUP
+      userName: nacos
+      password: Ab1234568
+      namespace:
+  service:
+    vgroup_mapping:
+      SEATA_GROUP: DEFAULT
+    default:
+      grouplist: seata:8091
+    disable-global-transaction: false
+spring:
+  aop:
+    proxy-target-class: true

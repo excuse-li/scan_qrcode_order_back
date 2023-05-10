@@ -1,0 +1,82 @@
+server:
+  port: 65527
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  resources:
+    add-mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+  application:
+    name: ws-api
+
+  cloud:
+    sentinel:
+      transport:
+        port: 8766 #默认8719端口，假如被占用会自动从8719开始依次+1扫描，直至找到未被占用的端口
+        dashboard: sentinel:8858
+      eager: true
+    alibaba:
+      seata:
+        tx-service-group: SEATA_GROP
+        service:
+          vgroupMapping:
+            SEATA_GROP: DEFAULT
+          default:
+            grouplist: seata:8091
+
+    nacos:
+      config:
+        server-addr: nacos:8848
+        username: nacos
+        password: Ab1234568
+      discovery:
+        server-addr: nacos:8848
+        username: nacos
+        password: Ab1234568
+seata:
+  enable-auto-data-source-proxy: true
+  tx-service-group: SEATA_GROUP
+  registry:
+    type: nacos
+    nacos:
+      server-addr: nacos:8848
+      # namespace: seata_namespace_id
+      group: SEATA_GROUP
+      username: nacos
+      password: Ab1234568
+  config:
+    type: nacos
+    nacos:
+      server-addr: nacos:8848
+      #      namespace: seata_namespace_id
+      group: SEATA_GROUP
+      userName: nacos
+      password: Ab1234568
+      namespace:
+  service:
+    vgroup_mapping:
+      SEATA_GROUP: DEFAULT
+    default:
+      grouplist: seata:8091
+    disable-global-transaction: false
+csp:
+  sentinel:
+    api: 8719
+
+feign:
+  hystrix:
+    enabled: true
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+
